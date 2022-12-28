@@ -28,7 +28,7 @@ searchInput.addEventListener("input", (e) => {
   setInterval(function() {
     i = ++i % 4
     if (matches.length == 0) div.innerHTML = `<b>Nenhum resultado${Array(i+1).join(".")}</b>`
-  }, 250)
+  }, 800)
 
   for (let i of matches) div.innerHTML += `<p>${i}</p>`
 
