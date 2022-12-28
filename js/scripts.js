@@ -14,14 +14,24 @@ const words = [
 ]
 
 const div = document.querySelector("#results")
-
-for (let i of words) div.innerHTML += `<p>${i}</p>`
+div.innerHTML = `<p>Começe a digitar</p>`
+var matches = []
 
 const searchInput = document.querySelector('#search')
 searchInput.addEventListener("input", (e) => {
   const value = searchInput.value
-  const matches = words.filter(s => s.toLowerCase().includes(value.toLowerCase()))
+  matches = words.filter(s => s.toLowerCase().includes(value.toLowerCase()))
 
   div.innerHTML = ""
+
+  let i = 0
+  setInterval(function() {
+    i = ++i % 4
+    if (matches.length == 0) div.innerHTML = `<b>Nenhum resultado${Array(i+1).join(".")}</b>`
+  }, 250)
+
   for (let i of matches) div.innerHTML += `<p>${i}</p>`
+
+
+  if (value == "") div.innerHTML = `<p>Começe a digitar</p>`
 })
